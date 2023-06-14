@@ -28,40 +28,14 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
+          <li class="nav-item" *ngFor="let link of links">
             <a
-              class="nav-link active"
+              class="nav-link"
+              [ngClass]="router.url === link.routerLink ? 'active' : ''"
               aria-current="page"
-              routerLink="/resister-student"
-              >Register Student</a
+              [routerLink]="link.routerLink"
+              >{{ link.label }}</a
             >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/view-students">View Student</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/register-librarian"
-              >Register Librarians</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/view-librarians"
-              >View Librarians</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/issue-book">Issue Books</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/view-borrowings"
-              >View Borrowings</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/register-book">Register Book</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/">View Books</a>
           </li>
         </ul>
       </div>

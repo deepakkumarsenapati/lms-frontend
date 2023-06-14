@@ -11,8 +11,9 @@ import { ViewBorrowingsComponent } from './view-borrowings/view-borrowings.compo
 import { ViewLibrariansComponent } from './view-librarians/view-librarians.component';
 import { ErrorComponent } from './error/error.component';
 import { ViewStudentsComponent } from './view-students/view-students.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

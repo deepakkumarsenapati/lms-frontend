@@ -10,7 +10,7 @@ import { ViewStudentsComponent } from './view-students/view-students.component';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
-  { path: 'resister-student', component: RegisterStudentComponent },
+  { path: 'register-student', component: RegisterStudentComponent },
   { path: 'register-book', component: RegisterBookComponent },
   { path: 'register-librarian', component: RegisterLibrarianComponent },
   { path: 'view-borrowings', component: ViewBorrowingsComponent },

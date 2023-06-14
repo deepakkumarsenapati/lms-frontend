@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppServiceService } from '../service/app-service.service';
+import { Student } from '../models/student.interface';
 
 @Component({
   selector: 'app-register-student',
@@ -13,23 +14,51 @@ export class RegisterStudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      address: new FormControl(''),
-      email: new FormControl(''),
-      gender: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      dateOfBirth: new FormControl(''),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      lastName: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      address: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      gender: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      dateOfBirth: new FormControl('', Validators.required),
     });
   }
 
+  get firstName() {
+    return this.profileForm.get('firstName');
+  }
+
+  get lastName() {
+    return this.profileForm.get('lastName');
+  }
+
+  get address() {
+    return this.profileForm.get('address');
+  }
+
+  get email() {
+    return this.profileForm.get('email');
+  }
+
+  get gender() {
+    return this.profileForm.get('gender');
+  }
+
+  get phoneNumber() {
+    return this.profileForm.get('phoneNumber');
+  }
+
+  get dateOfBirth() {
+    return this.profileForm.get('dateOfBirth');
+  }
+
   onSubmit() {
-    let student = this.profileForm.value;
+    let student: Student = this.profileForm.value;
     student.dateOfBirth = new Date(student.dateOfBirth);
     this.service.registerStudent(student).subscribe((resp) => {
       console.log(resp);
     });
-    //console.log(this.profileForm.value);
+    this.profileForm.reset();
     alert('form submitted');
   }
 }
