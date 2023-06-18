@@ -10,6 +10,10 @@ import { Student } from '../models/student.interface';
 })
 export class RegisterStudentComponent implements OnInit {
   profileForm!: FormGroup;
+  spinnerOn: boolean = false;
+  showToast: boolean = false;
+  heading: string = 'Congratulations';
+  body: string = 'You have registered one student successfully!';
   constructor(private service: AppServiceService) {}
 
   ngOnInit(): void {
@@ -53,12 +57,17 @@ export class RegisterStudentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinnerOn = true;
     let student: Student = this.profileForm.value;
     student.dateOfBirth = new Date(student.dateOfBirth);
     this.service.registerStudent(student).subscribe((resp) => {
+      this.showToast = true;
+      setTimeout(() => {
+        this.spinnerOn = false;
+        this.showToast = false;
+      }, 2000);
       console.log(resp);
     });
     this.profileForm.reset();
-    alert('form submitted');
   }
 }

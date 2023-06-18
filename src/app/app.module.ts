@@ -14,6 +14,8 @@ import { ViewStudentsComponent } from './view-students/view-students.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { AgGridModule } from 'ag-grid-angular';
     ViewLibrariansComponent,
     ErrorComponent,
     ViewStudentsComponent,
+    SpinnerComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
