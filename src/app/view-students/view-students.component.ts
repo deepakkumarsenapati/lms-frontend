@@ -68,8 +68,11 @@ export class ViewStudentsComponent implements OnInit {
     this.gridApi = params.api;
   }
 
-  deleteClicked() {
-    const selectedData = this.gridApi.getSelectedRows();
+  deleteClicked(event: any) {
+    console.log(event);
+    //const selectedData = this.gridApi.getSelectedRows();
+    let selectedData = [];
+    selectedData.push(event.rowData);
     const res = this.gridApi.applyTransaction({ remove: selectedData })!;
     console.log(res);
   }

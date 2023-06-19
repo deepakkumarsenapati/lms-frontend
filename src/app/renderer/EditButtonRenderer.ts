@@ -5,9 +5,8 @@ import { ICellRendererParams } from 'ag-grid-community';
 @Component({
   selector: 'delete-button-enderer',
   template: `<span>
-    <button type="button" class="btn btn-primary" (click)="buttonClicked()">
-      Edit
-    </button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="buttonClicked()">Edit</button>
   </span>`,
 })
 export class EditButtonRenderer implements ICellRendererAngularComp {
@@ -19,7 +18,5 @@ export class EditButtonRenderer implements ICellRendererAngularComp {
     return true;
   }
 
-  buttonClicked() {
-    alert('Edit Button Clicked!');
-  }
+  buttonClicked() {}
 }
