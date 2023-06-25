@@ -6,11 +6,13 @@ import { ICellRendererParams } from 'ag-grid-community';
   selector: 'delete-button-enderer',
   template: `<span>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="buttonClicked()">Edit</button>
+    <button type="button" class="btn btn-primary" (click)="buttonClicked($event)">Edit</button>
   </span>`,
 })
 export class EditButtonRenderer implements ICellRendererAngularComp {
+  params!: any;
   agInit(params: ICellRendererParams<any, any, any>): void {
+    this.params = params;
     console.log(params);
   }
   refresh(params: ICellRendererParams<any, any, any>): boolean {
@@ -18,5 +20,15 @@ export class EditButtonRenderer implements ICellRendererAngularComp {
     return true;
   }
 
-  buttonClicked() {}
+  buttonClicked(event: any) {
+    if (this.params.onClick instanceof Function) {
+      // put anything into params u want pass into parents component
+      const params = {
+        event: event,
+        rowData: this.params.node.data,
+        // ...something
+      };
+      this.params.onClick(params);
+    }
+  }
 }
