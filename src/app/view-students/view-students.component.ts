@@ -50,7 +50,8 @@ export class ViewStudentsComponent implements OnInit {
     },
   ];
 
-  public rowData$!: Observable<Student[]>;
+  // public rowData$!: Observable<Student[]>;
+  rowData: any;
 
   public defaultColDef: ColDef = {
     editable: true,
@@ -64,6 +65,8 @@ export class ViewStudentsComponent implements OnInit {
 
   public rowSelection: 'single' | 'multiple' = 'single';
 
+  public overlayLoadingTemplate = '<span class="ag-overlay-loading-center">Please wait while your rows are loading!!!</span>';
+
   profileForm!: FormGroup;
   spinnerOn: boolean = false;
   showToast: boolean = false;
@@ -71,7 +74,7 @@ export class ViewStudentsComponent implements OnInit {
   body: string = 'You have updated one student successfully!';
 
   constructor(private appService: AppServiceService, private service: AppServiceService) {
-    this.rowData$ = this.appService.getStudent();
+    // this.rowData$ = this.appService.getStudent();
   }
 
   ngOnInit(): void {
@@ -85,10 +88,17 @@ export class ViewStudentsComponent implements OnInit {
       phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
       dateOfBirth: new FormControl('', Validators.required),
     });
+    // this.gridApi.showLoadingOverlay();
+    this.appService.getStudent().subscribe((resp) => {
+      this.rowData = resp;
+
+      // this.gridApi.hideOverlay();
+    });
   }
 
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
+    this.gridApi.showLoadingOverlay();
   }
 
   deleteClicked(event: any) {
