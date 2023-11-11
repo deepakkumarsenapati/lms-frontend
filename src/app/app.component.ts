@@ -31,16 +31,16 @@ export class AppComponent implements OnInit {
         label: 'View Librarians',
       },
       {
-        routerLink: '/view-borrowings',
-        label: 'View Borrowings',
-      },
-      {
         routerLink: '/register-book',
         label: 'Register Book',
       },
       {
-        routerLink: '/',
+        routerLink: '/view-books',
         label: 'View Books',
+      },
+      {
+        routerLink: '/view-borrowings',
+        label: 'View Borrowings',
       },
     ];
   }

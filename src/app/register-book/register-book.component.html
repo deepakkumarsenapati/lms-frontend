@@ -1,1 +1,72 @@
-<p>register-book works!</p>
+<div class="card mt-3">
+  <div class="card-body">
+    <form class="row g-3" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="col-md-6">
+        <label for="titile" class="form-label">Titile</label>
+        <input
+          type="text"
+          autocomplete="off"
+          class="form-control"
+          id="titile"
+          formControlName="title"
+          [ngClass]="title?.invalid && (title?.dirty || title?.touched) ? 'is-invalid' : ''"
+        />
+        <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="invalid-feedback">
+          <div *ngIf="title?.errors?.['required']">Title is required.</div>
+          <div *ngIf="title?.errors?.['minlength']">Title must be at least 4 characters long.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="author" class="form-label">Author</label>
+        <input
+          type="text"
+          class="form-control"
+          id="author"
+          autocomplete="off"
+          formControlName="author"
+          [ngClass]="author?.invalid && (author?.dirty || author?.touched) ? 'is-invalid' : ''"
+        />
+        <div *ngIf="author?.invalid && (author?.dirty || author?.touched)" class="invalid-feedback">
+          <div *ngIf="author?.errors?.['required']">Author is required.</div>
+          <div *ngIf="author?.errors?.['minlength']">Author must be at least 4 characters long.</div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="category" class="form-label">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          id="category"
+          autocomplete="off"
+          placeholder="Programming"
+          formControlName="category"
+          [ngClass]="category?.invalid && (category?.dirty || category?.touched) ? 'is-invalid' : ''"
+        />
+        <div *ngIf="category?.invalid && (category?.dirty || category?.touched)" class="invalid-feedback">
+          <div *ngIf="category?.errors?.['required']">Category is required.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="totalcopies" class="form-label">TotalCopies</label>
+        <input
+          type="number"
+          class="form-control"
+          id="totalcopies"
+          autocomplete="off"
+          formControlName="totalCopies"
+          [ngClass]="totalCopies?.invalid && (totalCopies?.dirty || totalCopies?.touched) ? 'is-invalid' : ''"
+        />
+        <div *ngIf="totalCopies?.invalid && (totalCopies?.dirty || totalCopies?.touched)" class="invalid-feedback">
+          <div *ngIf="totalCopies?.errors?.['required']">TotalCopies is required.</div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-spinner *ngIf="spinnerOn"></app-spinner>
+<app-toast [showToast]="showToast" [heading]="heading" [body]="body"></app-toast>

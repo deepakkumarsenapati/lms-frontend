@@ -5,9 +5,10 @@ import { RegisterBookComponent } from './register-book/register-book.component';
 import { ViewBorrowingsComponent } from './view-borrowings/view-borrowings.component';
 import { ViewLibrariansComponent } from './view-librarians/view-librarians.component';
 import { RegisterLibrarianComponent } from './register-librarian/register-librarian.component';
-import { IssueBooksComponent } from './issue-books/issue-books.component';
+
 import { ViewStudentsComponent } from './view-students/view-students.component';
 import { ErrorComponent } from './error/error.component';
+import { ViewBooksComponent } from './view-books/view-books.component';
 
 const routes: Routes = [
   { path: 'register-student', component: RegisterStudentComponent },
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: 'register-librarian', component: RegisterLibrarianComponent },
   { path: 'view-borrowings', component: ViewBorrowingsComponent },
   { path: 'view-librarians', component: ViewLibrariansComponent },
-  { path: 'issue-book', component: IssueBooksComponent },
   { path: 'view-students', component: ViewStudentsComponent },
+  { path: 'view-books', component: ViewBooksComponent },
   { path: '', redirectTo: '/view-borrowings', pathMatch: 'full' }, // redirect to `first-component`
   { path: '**', component: ErrorComponent }, // Wildcard route for a 404 page
 ];
