@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Link } from './models/link';
+import { Link } from './models/link.interface';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent, ValueFormatterParams } from 'ag-grid-community';
-import { Observable } from 'rxjs';
 import { AppServiceService } from '../service/app-service.service';
 import { Student } from '../models/student.interface';
 import { DeleteButtonRenderer } from '../renderer/DeleteButtonRenderer';
